@@ -65,10 +65,9 @@ function drawTriangle() {
     ctx.lineTo(150, 50);
     ctx.lineTo(200, 150);
     ctx.lineTo(50, 150);
-    ctx.closePath();
-    ctx.stroke();
+    ctx.closePath(); // закрываем
+    ctx.stroke(); // отрисовываем
     ctx.fillStyle = 'rgb(0,0,100)';
-    ctx.fill();
-    
+    ctx.fill(); // заливка
   }
 }
