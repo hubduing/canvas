@@ -71,3 +71,27 @@ function drawTriangle() {
     ctx.fill(); // заливка
   }
 }
+
+function draw2d() {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  let myColor = 'red';
+  
+  document.getElementById('color').oninput = function(){
+    myColor = this.value;
+  };
+
+  canvas.onmousedown = (event) => {
+    canvas.onmousemove = (event) => {
+      let x = event.offsetX;
+      let y = event.offsetY;
+      ctx.fillRect(x-5, y-5, 10, 10);
+      ctx.fillStyle = myColor;
+      ctx.lineCap = 'round';
+      ctx.fill();
+    }
+    canvas.onmouseup = () => {
+      canvas.onmousemove = null;
+    }
+  }
+}
