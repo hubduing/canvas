@@ -95,3 +95,39 @@ function draw2d() {
     }
   }
 }
+
+function drawCircle() {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const pi = Math.PI;
+
+  if (canvas.getContext) {
+    ctx.beginPath();
+    ctx.arc(150, 100, 75, 0, 2 * pi, false); // false/true - по часовой/против часовой
+    ctx.lineWidth = '5';
+    ctx.strokeStyle = 'red';
+    ctx.fillStyle = 'rgba(0, 100, 100, 0.8)';
+    ctx.stroke(); // отрисовать фигуру
+    ctx.fill(); // для того что бы залить фигуру
+    ctx.closePath();
+  }
+
+  canvas.onmousedown = function() {
+    canvas.onmousemove = function(event) {
+      let x = event.offsetX;
+      let y = event.offsetY;
+      let summ = Math.pow(x-200, 2) + Math.pow(y-100, 2);
+      let radius = Math.pow(summ, 0.5)
+  
+      ctx.clearRect(0, 0, 400, 200);
+      ctx.beginPath();
+      ctx.arc(200, 100, radius, 0, 2*pi, false);
+      ctx.stroke();
+      ctx.fill();
+      ctx.closePath();
+    }
+  }
+  canvas.onmouseup = () => {
+    canvas.onmousemove = null;
+  }
+} 
